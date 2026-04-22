@@ -238,11 +238,7 @@ export default function PatientDashboard() {
         </div>
 
         {/* Main content with animations */}
-        <div className="px-5 pt-5 pb-5 animate-fade-in space-y-6">
-          {healthEntries.length === 0 && (
-            <AlertBanner variant="warning" title={t('patient.noHealthData')} description={t('patient.noHealthDataDesc')} />
-          )}
-
+        <div className="px-5 pt-5 pb-5 animate-fade-in space-y-5">
           {hasAbnormalVitals && latestEntry && (
             <AlertBanner
               variant="danger"
@@ -250,6 +246,53 @@ export default function PatientDashboard() {
               description={`${t('records.bp')}: ${latestEntry.systolic}/${latestEntry.diastolic}, ${t('patient.heartRate')}: ${latestEntry.heart_rate} bpm`}
             />
           )}
+
+          {/* === SMART HEALTH INTELLIGENCE === */}
+          {(() => {
+            const vitalsSnap = latestEntry
+              ? { systolic: latestEntry.systolic, diastolic: latestEntry.diastolic, heart_rate: latestEntry.heart_rate }
+              : null;
+            const scoreResult = computeHealthScore(todayLog ?? null, vitalsSnap);
+            const weightHistory = healthEntries.slice(0, 7).map((h) => Number(h.weight));
+            const smartAlerts = generateSmartAlerts(dailyLogs, vitalsSnap, weightHistory);
+            const tips = generateRecommendations(scoreResult.subScores, shownTipIds, 3);
+
+            return (
+              <>
+                {/* Health Score Ring - HERO */}
+                <div className="scroll-fade-in">
+                  <HealthScoreRing result={scoreResult} />
+                </div>
+
+                {/* Quick Log CTA */}
+                <Button
+                  onClick={() => setShowQuickLog(true)}
+                  className="w-full h-12 rounded-2xl text-sm font-semibold shadow-soft press-zoom"
+                  size="lg"
+                >
+                  <PlusCircle className="h-5 w-5 mr-2" />
+                  {todayLog ? t('quickLog.updateButton') : t('quickLog.openButton')}
+                </Button>
+
+                {/* Smart Alerts */}
+                {smartAlerts.length > 0 && (
+                  <div className="scroll-fade-in">
+                    <SmartAlertsCard alerts={smartAlerts} />
+                  </div>
+                )}
+
+                {/* Today's Recommendations */}
+                <div className="scroll-fade-in">
+                  <RecommendationsCard tips={tips} userId={userId} />
+                </div>
+
+                {/* Quick Stats Grid */}
+                <div className="scroll-fade-in">
+                  <QuickStatsGrid logs={dailyLogs} healthEntries={healthEntries} heightCm={height} />
+                </div>
+              </>
+            );
+          })()}
 
           {/* Summary Cards with premium styling and animations */}
           <div className="grid grid-cols-3 gap-3 scroll-fade-in">
