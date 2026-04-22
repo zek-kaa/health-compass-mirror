@@ -269,6 +269,98 @@
 "appointmentCreated": "Miadi imetengenezwa",
 "appointmentFailed": "Imeshindwa kutengeneza miadi",
 "noAppointments": "Hakuna miadi iliyopangwa"
+},
+"score": {
+"outOf": "kati ya 100",
+"sleep": "Usingizi",
+"nutrition": "Lishe",
+"exercise": "Mazoezi",
+"hydration": "Maji",
+"stress": "Msongo",
+"vitals": "Vipimo",
+"bandExcellent": "Bora kabisa",
+"bandGood": "Nzuri",
+"bandNeedsAttention": "Inahitaji uangalizi",
+"bandTakeAction": "Chukua hatua",
+"bandNoData": "Hakuna data",
+"focusOn": "Zingatia zaidi",
+"keepItUp": "Endelea hivyo!",
+"noDataHint": "Anza kuandika data ya leo upate alama yako",
+"dataCompleteness": "Ukamilifu wa data",
+"todaysScore": "Alama ya leo"
+},
+"quickLog": {
+"title": "Andika data ya leo",
+"subtitle": "Sekunde 30 tu - inaboresha alama yako",
+"sleep": "Usingizi (saa)",
+"water": "Maji",
+"glasses": "glasi",
+"exercise": "Mazoezi",
+"meals": "Milo",
+"stress": "Kiwango cha msongo",
+"calm": "Mtulivu",
+"tense": "Mkali",
+"save": "Hifadhi data ya leo",
+"saved": "Imehifadhiwa! Alama yako imesasishwa",
+"error": "Imeshindwa kuhifadhi",
+"openButton": "Andika data ya leo",
+"updateButton": "Sasisha data ya leo"
+},
+"smartAlert": {
+"heading": "Tahadhari za busara",
+"lowSleepTitle": "Usingizi mdogo umeonekana",
+"lowSleepMsg": "Umelala chini ya saa 6 kwa siku 2 mfululizo. Jaribu kulala mapema.",
+"dehydrationTitle": "Maji yako chini ya kiwango",
+"dehydrationMsg": "Bado hujafikia glasi 4 leo. Kunywa glasi moja sasa.",
+"highStressTitle": "Mfumo wa msongo mkubwa",
+"highStressMsg": "Msongo wako umekuwa juu kwa siku 3. Pumzika au tembea kidogo.",
+"sedentaryTitle": "Hujasonga sana",
+"sedentaryMsg": "Hujafanya mazoezi kwa siku 3. Hata dakika 10 za kutembea zinasaidia.",
+"bpElevatedTitle": "Shinikizo la damu juu",
+"bpElevatedMsg": "Vipimo vyako vya hivi karibuni viko juu ya kawaida. Wasiliana na daktari.",
+"missedLogTitle": "Hujaandika data",
+"missedLogMsg": "Andika data ya leo ili kuona maendeleo yako.",
+"weightChangeTitle": "Mabadiliko ya uzito",
+"weightChangeMsg": "Uzito wako umebadilika zaidi ya kg 2 kwa wiki moja.",
+"priority": {
+"low": "Chini",
+"medium": "Kati",
+"high": "Juu"
+}
+},
+"rec": {
+"heading": "Mapendekezo ya leo"
+},
+"tip": {
+"sleep1": "Jaribu kulala dakika 30 mapema usiku huu.",
+"sleep2": "Epuka simu na skrini saa moja kabla ya kulala.",
+"sleep3": "Hifadhi chumba chako kuwa na baridi (18-20°C) kwa usingizi bora.",
+"hyd1": "Kunywa glasi ya maji sasa hivi.",
+"hyd2": "Weka kikumbusho cha kunywa maji kila saa 2.",
+"hyd3": "Ongeza limau au tango kwenye maji yako kwa ladha.",
+"exe1": "Tembea dakika 10 baada ya chakula cha mchana.",
+"exe2": "Fanya mazoezi ya kunyoosha mwili kwa dakika 5 sasa.",
+"exe3": "Tumia ngazi badala ya lifti leo.",
+"nut1": "Hakikisha kila mlo una mboga au matunda.",
+"nut2": "Punguza vinywaji vyenye sukari leo.",
+"nut3": "Kula polepole - inasaidia mmeng'enyo.",
+"str1": "Pumua kwa kina mara 5: vuta sec 4, shika sec 4, toa sec 6.",
+"str2": "Toka nje dakika 5 - hewa safi inasaidia.",
+"str3": "Andika mambo 3 unayoshukuru leo.",
+"vit1": "Pima shinikizo la damu asubuhi kabla ya kahawa.",
+"vit2": "Hakikisha unapima vipimo vyako kila wiki."
+},
+"stats": {
+"sleep": "Usingizi",
+"hydration": "Maji",
+"exercise": "Mazoezi",
+"weight": "Uzito",
+"avg7d": "Wastani wa siku 7",
+"ofGoal": "ya lengo",
+"dayStreak": "siku mfululizo",
+"startStreak": "Anza streak yako",
+"bmi": "BMI",
+"logVitals": "Andika vipimo vyako"
 }
 }
 
