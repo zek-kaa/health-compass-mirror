@@ -52,9 +52,15 @@ export default function PatientDashboard() {
   const [manualDiastolic, setManualDiastolic] = useState(78);
   const [manualHeartRate, setManualHeartRate] = useState(74);
   const [showOverlay, setShowOverlay] = useState(false);
+  const [showQuickLog, setShowQuickLog] = useState(false);
   const observe = useScrollAnimation();
   const mainRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
+
+  // Daily logs + recommendations tracking
+  const { data: dailyLogs = [] } = useDailyLogs(userId);
+  const { data: todayLog } = useTodayLog(userId);
+  const { data: shownTipIds = [] } = useTodayRecommendations(userId);
 
   // Observe scroll animations
   useEffect(() => {
