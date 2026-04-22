@@ -2,6 +2,7 @@ import { useMemo, useState, useRef, useEffect } from "react";
 import { useAuth } from "@/hooks/use-auth";
 import { useI18n } from "@/hooks/useI18n";
 import { type DbAlert, type DbMedicalHistory, usePatientByUserId, useAlerts, useMedicalHistory, useHealthEntries } from "@/hooks/use-data";
+import { useDailyLogs, useTodayLog, useTodayRecommendations } from "@/hooks/use-daily-logs";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { BottomNav } from "@/components/BottomNav";
@@ -9,8 +10,14 @@ import { AlertBanner } from "@/components/health/AlertBanner";
 import { CalculatorCard } from "@/components/health/CalculatorCard";
 import { ChartCard } from "@/components/health/ChartCard";
 import { HealthForm } from "@/components/health/HealthForm";
+import { HealthScoreRing } from "@/components/health/HealthScoreRing";
+import { QuickLogSheet } from "@/components/health/QuickLogSheet";
+import { SmartAlertsCard } from "@/components/health/SmartAlertsCard";
+import { RecommendationsCard } from "@/components/health/RecommendationsCard";
+import { QuickStatsGrid } from "@/components/health/QuickStatsGrid";
+import { computeHealthScore, generateSmartAlerts, generateRecommendations } from "@/lib/health-score";
 import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
-import { HeartPulse, Users, Bell, LogOut, LayoutDashboard, Calculator, BarChart, Activity, ArrowRight, X } from "lucide-react";
+import { HeartPulse, Users, Bell, LogOut, LayoutDashboard, Calculator, BarChart, Activity, ArrowRight, X, PlusCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, BarChart as RechartsBarChart, Bar } from "recharts";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
@@ -45,9 +52,15 @@ export default function PatientDashboard() {
   const [manualDiastolic, setManualDiastolic] = useState(78);
   const [manualHeartRate, setManualHeartRate] = useState(74);
   const [showOverlay, setShowOverlay] = useState(false);
+  const [showQuickLog, setShowQuickLog] = useState(false);
   const observe = useScrollAnimation();
   const mainRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
+
+  // Daily logs + recommendations tracking
+  const { data: dailyLogs = [] } = useDailyLogs(userId);
+  const { data: todayLog } = useTodayLog(userId);
+  const { data: shownTipIds = [] } = useTodayRecommendations(userId);
 
   // Observe scroll animations
   useEffect(() => {
@@ -225,11 +238,7 @@ export default function PatientDashboard() {
         </div>
 
         {/* Main content with animations */}
-        <div className="px-5 pt-5 pb-5 animate-fade-in space-y-6">
-          {healthEntries.length === 0 && (
-            <AlertBanner variant="warning" title={t('patient.noHealthData')} description={t('patient.noHealthDataDesc')} />
-          )}
-
+        <div className="px-5 pt-5 pb-5 animate-fade-in space-y-5">
           {hasAbnormalVitals && latestEntry && (
             <AlertBanner
               variant="danger"
@@ -237,6 +246,53 @@ export default function PatientDashboard() {
               description={`${t('records.bp')}: ${latestEntry.systolic}/${latestEntry.diastolic}, ${t('patient.heartRate')}: ${latestEntry.heart_rate} bpm`}
             />
           )}
+
+          {/* === SMART HEALTH INTELLIGENCE === */}
+          {(() => {
+            const vitalsSnap = latestEntry
+              ? { systolic: latestEntry.systolic, diastolic: latestEntry.diastolic, heart_rate: latestEntry.heart_rate }
+              : null;
+            const scoreResult = computeHealthScore(todayLog ?? null, vitalsSnap);
+            const weightHistory = healthEntries.slice(0, 7).map((h) => Number(h.weight));
+            const smartAlerts = generateSmartAlerts(dailyLogs, vitalsSnap, weightHistory);
+            const tips = generateRecommendations(scoreResult.subScores, shownTipIds, 3);
+
+            return (
+              <>
+                {/* Health Score Ring - HERO */}
+                <div className="scroll-fade-in">
+                  <HealthScoreRing result={scoreResult} />
+                </div>
+
+                {/* Quick Log CTA */}
+                <Button
+                  onClick={() => setShowQuickLog(true)}
+                  className="w-full h-12 rounded-2xl text-sm font-semibold shadow-soft press-zoom"
+                  size="lg"
+                >
+                  <PlusCircle className="h-5 w-5 mr-2" />
+                  {todayLog ? t('quickLog.updateButton') : t('quickLog.openButton')}
+                </Button>
+
+                {/* Smart Alerts */}
+                {smartAlerts.length > 0 && (
+                  <div className="scroll-fade-in">
+                    <SmartAlertsCard alerts={smartAlerts} />
+                  </div>
+                )}
+
+                {/* Today's Recommendations */}
+                <div className="scroll-fade-in">
+                  <RecommendationsCard tips={tips} userId={userId} />
+                </div>
+
+                {/* Quick Stats Grid */}
+                <div className="scroll-fade-in">
+                  <QuickStatsGrid logs={dailyLogs} healthEntries={healthEntries} heightCm={height} />
+                </div>
+              </>
+            );
+          })()}
 
           {/* Summary Cards with premium styling and animations */}
           <div className="grid grid-cols-3 gap-3 scroll-fade-in">
@@ -412,6 +468,14 @@ export default function PatientDashboard() {
         if (f !== "summary") handlePanelToggle(f as PatientFeature);
         else setShowOverlay(false);
       }} items={patientNavItems} />
+
+      {/* Quick Log Sheet */}
+      <QuickLogSheet
+        open={showQuickLog}
+        onOpenChange={setShowQuickLog}
+        userId={userId}
+        existing={todayLog ?? null}
+      />
     </div>
   );
 }
