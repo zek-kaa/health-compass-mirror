@@ -13,6 +13,7 @@ import { HealthForm } from "@/components/health/HealthForm";
 import { HealthScoreRing } from "@/components/health/HealthScoreRing";
 import { QuickLogSheet } from "@/components/health/QuickLogSheet";
 import { SmartAlertsCard } from "@/components/health/SmartAlertsCard";
+import { AlertsTimeline } from "@/components/health/AlertsTimeline";
 import { RecommendationsCard } from "@/components/health/RecommendationsCard";
 import { QuickStatsGrid } from "@/components/health/QuickStatsGrid";
 import { computeHealthScore, generateSmartAlerts, generateRecommendations } from "@/lib/health-score";
@@ -87,6 +88,7 @@ export default function PatientDashboard() {
   }, [latestEntry]);
 
   const patientAlerts = alertsData.filter((a: DbAlert) => a.patient_id === patientId && !a.resolved);
+  const patientAlertsAll = alertsData.filter((a: DbAlert) => a.patient_id === patientId);
   const highRisk = patient?.risk_level === "high" ? 1 : 0;
 
   const insightData = useMemo(() => {
@@ -284,6 +286,11 @@ export default function PatientDashboard() {
                 {/* Today's Recommendations */}
                 <div className="scroll-fade-in">
                   <RecommendationsCard tips={tips} userId={userId} />
+                </div>
+
+                {/* Alerts & Reminders Timeline */}
+                <div className="scroll-fade-in">
+                  <AlertsTimeline alerts={patientAlertsAll} />
                 </div>
 
                 {/* Quick Stats Grid */}
