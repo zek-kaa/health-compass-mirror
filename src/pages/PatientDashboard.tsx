@@ -468,6 +468,14 @@ export default function PatientDashboard() {
         if (f !== "summary") handlePanelToggle(f as PatientFeature);
         else setShowOverlay(false);
       }} items={patientNavItems} />
+
+      {/* Quick Log Sheet */}
+      <QuickLogSheet
+        open={showQuickLog}
+        onOpenChange={setShowQuickLog}
+        userId={userId}
+        existing={todayLog ?? null}
+      />
     </div>
   );
 }
