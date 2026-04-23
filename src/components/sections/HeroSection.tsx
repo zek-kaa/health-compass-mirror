@@ -1,4 +1,5 @@
 import { Heart, Users, AlertTriangle, Bell, Calendar, Sparkles } from "lucide-react";
+import { useState, useEffect } from "react";
 import { useStats, useAppointments } from "@/hooks/use-data";
 import { useAuth } from "@/hooks/use-auth";
 import { useI18n } from "@/hooks/useI18n";
@@ -14,6 +15,19 @@ export function HeroSection() {
   const hour = new Date().getHours();
   const greeting = hour < 12 ? t('dashboard.greetingMorning') : hour < 17 ? t('dashboard.greetingAfternoon') : t('dashboard.greetingEvening');
 
+  // Typewriter effect for greeting
+  const [typed, setTyped] = useState("");
+  useEffect(() => {
+    setTyped("");
+    let i = 0;
+    const interval = setInterval(() => {
+      i++;
+      setTyped(greeting.slice(0, i));
+      if (i >= greeting.length) clearInterval(interval);
+    }, 70);
+    return () => clearInterval(interval);
+  }, [greeting]);
+
   const cards = [
     { label: t('dashboard.patients'), value: stats?.totalPatients ?? "—", icon: Users, color: "bg-primary/10 text-primary" },
     { label: t('dashboard.risks'), value: stats?.highRisk ?? "—", icon: AlertTriangle, color: "bg-destructive/10 text-destructive" },
@@ -28,10 +42,14 @@ export function HeroSection() {
 
       <div className="relative">
 
-        {/* Main greeting */}
+        {/* Main greeting with typewriter effect */}
         <div className="flex items-center gap-2 scroll-fade-in" style={{ animationDelay: "100ms" }}>
-          <h1 className="text-3xl font-extrabold text-foreground mt-4 leading-tight">
-            {greeting}
+          <h1 className="text-3xl font-extrabold text-foreground mt-4 leading-tight min-h-[2.5rem]">
+            {typed}
+            <span
+              className="inline-block w-[3px] h-7 ml-1 align-middle bg-primary animate-pulse"
+              aria-hidden="true"
+            />
           </h1>
           <Sparkles className="h-7 w-7 text-primary mt-4 pulse-glow" />
         </div>
