@@ -20,7 +20,7 @@ const SLIDES = [
 ];
 
 export default function AboutAfyaSection() {
-  const { t, language } = useI18n();
+  const { lang } = useI18n();
   const sectionRef = useRef<HTMLElement | null>(null);
   const stackRef = useRef<HTMLDivElement | null>(null);
   const progressRef = useRef<HTMLDivElement | null>(null);
@@ -113,7 +113,7 @@ export default function AboutAfyaSection() {
     return () => ctx.revert();
   }, []);
 
-  const isSw = language === "sw";
+  const isSw = lang === "sw";
 
   return (
     <section
