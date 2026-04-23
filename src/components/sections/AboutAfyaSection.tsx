@@ -235,11 +235,11 @@ export default function AboutAfyaSection() {
                 >
                   {/* Swahili layer */}
                   <div className="layer-sw absolute inset-0 will-change-transform">
-                    <div className="relative w-full h-full rounded-3xl overflow-hidden border-4 border-blue-500/80 shadow-2xl shadow-blue-500/30 ring-1 ring-blue-200">
+                    <div className="relative w-full h-full rounded-3xl overflow-hidden border-4 border-blue-500/80 shadow-2xl shadow-blue-500/30 ring-1 ring-blue-200 bg-white">
                       <img
                         src={slide.sw}
                         alt={`Kiswahili slide ${i + 1}`}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain p-2"
                         loading={i === 0 ? "eager" : "lazy"}
                       />
                       <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-blue-600 text-white text-xs font-bold tracking-wide shadow-lg">
@@ -249,11 +249,11 @@ export default function AboutAfyaSection() {
                   </div>
                   {/* English layer */}
                   <div className="layer-en absolute inset-0 will-change-transform">
-                    <div className="relative w-full h-full rounded-3xl overflow-hidden border-4 border-blue-600/80 shadow-2xl shadow-blue-600/30 ring-1 ring-blue-200">
+                    <div className="relative w-full h-full rounded-3xl overflow-hidden border-4 border-blue-600/80 shadow-2xl shadow-blue-600/30 ring-1 ring-blue-200 bg-white">
                       <img
                         src={slide.en}
                         alt={`English slide ${i + 1}`}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain p-2"
                         loading="lazy"
                       />
                       <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-slate-900 text-white text-xs font-bold tracking-wide shadow-lg">
