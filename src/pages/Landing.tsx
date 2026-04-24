@@ -8,6 +8,7 @@ import { LanguageToggle } from "@/components/LanguageToggle";
 import LoginDropdown from "@/components/LoginDropdown";
 import AboutAfyaSection from "@/components/sections/AboutAfyaSection";
 import FeaturesShowcaseSection from "@/components/sections/FeaturesShowcaseSection";
+import { ExpandableFeatureCard } from "@/components/landing/ExpandableFeatureCard";
 
 interface PhonePosition {
   rotateX: number;
