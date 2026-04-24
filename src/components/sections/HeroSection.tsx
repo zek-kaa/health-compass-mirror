@@ -1,5 +1,5 @@
 import { Heart, Users, AlertTriangle, Bell, Calendar, Sparkles, Volume2, VolumeX } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useStats, useAppointments } from "@/hooks/use-data";
 import { useAuth } from "@/hooks/use-auth";
 import { useI18n } from "@/hooks/useI18n";
