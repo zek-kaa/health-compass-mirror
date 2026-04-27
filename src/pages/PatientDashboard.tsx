@@ -3,6 +3,7 @@ import { useAuth } from "@/hooks/use-auth";
 import { useI18n } from "@/hooks/useI18n";
 import { type DbAlert, type DbMedicalHistory, usePatientByUserId, useAlerts, useMedicalHistory, useHealthEntries } from "@/hooks/use-data";
 import { useDailyLogs, useTodayLog, useTodayRecommendations } from "@/hooks/use-daily-logs";
+import { useDayChange } from "@/hooks/use-day-change";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { BottomNav } from "@/components/BottomNav";
