@@ -317,7 +317,10 @@
     "saved": "Saved! Your score has been updated",
     "error": "Failed to save",
     "openButton": "Log today's data",
-    "updateButton": "Update today's log"
+    "updateButton": "Update today's log",
+    "requiredTitle": "Today's log is required",
+    "requiredDesc": "Please record today's health data to keep tracking your progress. It resets fresh each new day.",
+    "fillNow": "Fill in now"
   },
   "smartAlert": {
     "heading": "Smart alerts",
