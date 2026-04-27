@@ -353,25 +353,6 @@ export default function PatientDashboard() {
             );
           })()}
 
-          {/* Summary Cards with premium styling and animations */}
-          <div className="grid grid-cols-3 gap-3 scroll-fade-in">
-            {summaryCards.map((s, idx) => (
-              <div key={s.label} className="scroll-scale-in group relative bg-gradient-to-br from-card/90 via-card/85 to-card/80 frosted-glass rounded-2xl border border-primary/25 md:border-primary/20 backdrop-blur-md p-3 text-center transition-all duration-500 ease-out shadow-soft md:shadow-sm md:hover:-translate-y-1.5 md:hover:scale-[1.05] md:hover:border-primary/40 md:hover:shadow-elevated press-zoom overflow-hidden" style={{ animationDelay: `${idx * 100}ms` }}>
-                {/* Gradient overlay on hover */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-md" />
-                {/* Shine effect */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-40 transition-opacity duration-700">
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                </div>
-                <div className="relative z-10">
-                  <s.icon className={`h-5 w-5 mx-auto ${s.color} group-hover:scale-110 transition-transform duration-500`} />
-                  <p className="text-xl font-bold mt-1 text-foreground group-hover:text-primary transition-colors duration-500">{s.value}</p>
-                  <p className="text-[10px] text-muted-foreground group-hover:text-muted-foreground/80 transition-colors duration-500">{s.label}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
           {/* Action Buttons with premium gradients and effects */}
           <div className="grid gap-4 sm:grid-cols-2">
             <button type="button" onClick={() => handlePanelToggle("add-data")} className="group scroll-fade-in relative rounded-3xl frosted-glass border border-primary/25 md:border-primary/20 bg-gradient-to-br from-card/80 via-card/70 to-card/60 backdrop-blur-md p-4 text-left transition-all duration-500 ease-out shadow-soft md:shadow-sm md:hover:-translate-y-1.5 md:hover:scale-[1.03] md:hover:border-primary/40 md:hover:shadow-elevated press-zoom overflow-hidden">
