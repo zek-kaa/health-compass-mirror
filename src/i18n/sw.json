@@ -320,7 +320,10 @@
 "saved": "Imehifadhiwa! Alama yako imesasishwa",
 "error": "Imeshindwa kuhifadhi",
 "openButton": "Andika data ya leo",
-"updateButton": "Sasisha data ya leo"
+"updateButton": "Sasisha data ya leo",
+"requiredTitle": "Data ya leo inahitajika",
+"requiredDesc": "Tafadhali jaza taarifa zako za afya za leo ili kuendelea kufuatilia hali yako. Itakuanza upya kesho.",
+"fillNow": "Jaza sasa"
 },
 "smartAlert": {
 "heading": "Tahadhari za busara",
