@@ -106,9 +106,7 @@ export default function PatientDashboard() {
     setManualHeartRate(latestEntry.heart_rate);
   }, [latestEntry]);
 
-  const patientAlerts = alertsData.filter((a: DbAlert) => a.patient_id === patientId && !a.resolved);
   const patientAlertsAll = alertsData.filter((a: DbAlert) => a.patient_id === patientId);
-  const highRisk = patient?.risk_level === "high" ? 1 : 0;
 
   const insightData = useMemo(() => {
     if (!healthEntries.length) return [];
