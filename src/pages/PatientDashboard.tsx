@@ -61,8 +61,26 @@ export default function PatientDashboard() {
 
   // Daily logs + recommendations tracking
   const { data: dailyLogs = [] } = useDailyLogs(userId);
-  const { data: todayLog } = useTodayLog(userId);
+  const { data: todayLog, isLoading: todayLoading } = useTodayLog(userId);
   const { data: shownTipIds = [] } = useTodayRecommendations(userId);
+
+  // Track date changes — when midnight passes, queries auto-refresh and today resets
+  const today = useDayChange();
+
+  // Auto-open the daily log sheet once per new day if it hasn't been filled yet
+  useEffect(() => {
+    if (!userId || todayLoading) return;
+    if (todayLog) return; // already logged today
+    const flagKey = `daily-log-prompted-${userId}-${today}`;
+    if (typeof window === "undefined") return;
+    if (window.sessionStorage.getItem(flagKey)) return;
+    // Defer slightly so the dashboard finishes its initial paint
+    const t = setTimeout(() => {
+      setShowQuickLog(true);
+      window.sessionStorage.setItem(flagKey, "1");
+    }, 600);
+    return () => clearTimeout(t);
+  }, [userId, today, todayLog, todayLoading]);
 
   // Observe scroll animations
   useEffect(() => {
