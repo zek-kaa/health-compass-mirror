@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { Heart, ArrowRight, Users, BarChart3, Bell, Activity, Stethoscope } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -6,6 +6,7 @@ import { useAuth } from "@/hooks/use-auth";
 import { useI18n } from "@/hooks/useI18n";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import LoginDropdown from "@/components/LoginDropdown";
+import confetti from "canvas-confetti";
 import AboutAfyaSection from "@/components/sections/AboutAfyaSection";
 import FeaturesShowcaseSection from "@/components/sections/FeaturesShowcaseSection";
 import { ExpandableFeatureCard } from "@/components/landing/ExpandableFeatureCard";
