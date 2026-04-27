@@ -433,33 +433,60 @@ export default function PatientDashboard() {
               {activeFeature === "insights" && (
                 <div className="space-y-5 py-4 animate-fade-in">
                   {insightData.length === 0 ? (
-                     <div className="text-center py-12 text-muted-foreground text-sm">
-                       <BarChart className="h-10 w-10 mx-auto mb-3 opacity-30" />
-                       {t('patient.noInsightData')}
-                     </div>
+                    <div className="text-center py-12 px-4 text-muted-foreground text-sm rounded-2xl border border-dashed border-border/60 bg-card/30">
+                      <BarChart className="h-10 w-10 mx-auto mb-3 opacity-30" />
+                      <p className="font-medium text-foreground mb-1">{t('patient.noInsightData')}</p>
+                      <p className="text-xs">{t('patient.noInsightHint') !== 'patient.noInsightHint' ? t('patient.noInsightHint') : ''}</p>
+                      <Button
+                        size="sm"
+                        className="mt-4 rounded-xl"
+                        onClick={() => { setActiveFeature("add-data"); }}
+                      >
+                        <PlusCircle className="h-4 w-4 mr-1.5" />
+                        {t('patient.addData')}
+                      </Button>
+                    </div>
                   ) : (
                     <div className="grid gap-5 lg:grid-cols-2">
                       <ChartCard title={t('patient.bpChart')} description={t('patient.bpChartDesc')}>
-                        <div className="h-64">
-                          <LineChart data={insightData}>
-                            <CartesianGrid strokeDasharray="4 4" stroke="#e2e8f0" />
-                            <XAxis dataKey="label" stroke="#94a3b8" />
-                            <YAxis stroke="#94a3b8" />
-                            <Tooltip />
-                            <Line type="monotone" dataKey="systolic" stroke="#2563eb" strokeWidth={2} dot />
-                            <Line type="monotone" dataKey="diastolic" stroke="#f59e0b" strokeWidth={2} dot />
-                          </LineChart>
+                        <div className="h-64 w-full">
+                          <ResponsiveContainer width="100%" height="100%">
+                            <LineChart data={insightData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                              <CartesianGrid strokeDasharray="4 4" stroke="hsl(var(--border))" />
+                              <XAxis dataKey="label" stroke="hsl(var(--muted-foreground))" fontSize={11} />
+                              <YAxis stroke="hsl(var(--muted-foreground))" fontSize={11} />
+                              <Tooltip contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", borderRadius: 12 }} />
+                              <Legend wrapperStyle={{ fontSize: 11 }} />
+                              <Line type="monotone" dataKey="systolic" name="Systolic" stroke="hsl(var(--primary))" strokeWidth={2} dot />
+                              <Line type="monotone" dataKey="diastolic" name="Diastolic" stroke="hsl(var(--warning))" strokeWidth={2} dot />
+                            </LineChart>
+                          </ResponsiveContainer>
                         </div>
                       </ChartCard>
                       <ChartCard title={t('patient.weightChart')} description={t('patient.weightChartDesc')}>
-                        <div className="h-64">
-                          <RechartsBarChart data={insightData}>
-                            <CartesianGrid strokeDasharray="4 4" stroke="#e2e8f0" />
-                            <XAxis dataKey="label" stroke="#94a3b8" />
-                            <YAxis stroke="#94a3b8" />
-                            <Tooltip />
-                            <Bar dataKey="weight" fill="#22c55e" radius={[8, 8, 0, 0]} />
-                          </RechartsBarChart>
+                        <div className="h-64 w-full">
+                          <ResponsiveContainer width="100%" height="100%">
+                            <RechartsBarChart data={insightData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                              <CartesianGrid strokeDasharray="4 4" stroke="hsl(var(--border))" />
+                              <XAxis dataKey="label" stroke="hsl(var(--muted-foreground))" fontSize={11} />
+                              <YAxis stroke="hsl(var(--muted-foreground))" fontSize={11} />
+                              <Tooltip contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", borderRadius: 12 }} />
+                              <Bar dataKey="weight" fill="hsl(var(--success))" radius={[8, 8, 0, 0]} />
+                            </RechartsBarChart>
+                          </ResponsiveContainer>
+                        </div>
+                      </ChartCard>
+                      <ChartCard title={t('patient.heartRateTitle')} description={t('patient.heartRateDesc')}>
+                        <div className="h-64 w-full">
+                          <ResponsiveContainer width="100%" height="100%">
+                            <LineChart data={insightData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                              <CartesianGrid strokeDasharray="4 4" stroke="hsl(var(--border))" />
+                              <XAxis dataKey="label" stroke="hsl(var(--muted-foreground))" fontSize={11} />
+                              <YAxis stroke="hsl(var(--muted-foreground))" fontSize={11} />
+                              <Tooltip contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", borderRadius: 12 }} />
+                              <Line type="monotone" dataKey="heartRate" name="BPM" stroke="hsl(var(--destructive))" strokeWidth={2} dot />
+                            </LineChart>
+                          </ResponsiveContainer>
                         </div>
                       </ChartCard>
                     </div>
