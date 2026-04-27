@@ -3,6 +3,7 @@ import { useAuth } from "@/hooks/use-auth";
 import { useI18n } from "@/hooks/useI18n";
 import { type DbAlert, type DbMedicalHistory, usePatientByUserId, useAlerts, useMedicalHistory, useHealthEntries } from "@/hooks/use-data";
 import { useDailyLogs, useTodayLog, useTodayRecommendations } from "@/hooks/use-daily-logs";
+import { useDayChange } from "@/hooks/use-day-change";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { BottomNav } from "@/components/BottomNav";
@@ -18,7 +19,7 @@ import { RecommendationsCard } from "@/components/health/RecommendationsCard";
 import { QuickStatsGrid } from "@/components/health/QuickStatsGrid";
 import { computeHealthScore, generateSmartAlerts, generateRecommendations } from "@/lib/health-score";
 import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
-import { HeartPulse, Users, Bell, LogOut, LayoutDashboard, Calculator, BarChart, Activity, ArrowRight, X, PlusCircle } from "lucide-react";
+import { HeartPulse, Users, Bell, LogOut, LayoutDashboard, Calculator, BarChart, Activity, ArrowRight, X, PlusCircle, AlertCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, BarChart as RechartsBarChart, Bar } from "recharts";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
@@ -60,8 +61,26 @@ export default function PatientDashboard() {
 
   // Daily logs + recommendations tracking
   const { data: dailyLogs = [] } = useDailyLogs(userId);
-  const { data: todayLog } = useTodayLog(userId);
+  const { data: todayLog, isLoading: todayLoading } = useTodayLog(userId);
   const { data: shownTipIds = [] } = useTodayRecommendations(userId);
+
+  // Track date changes — when midnight passes, queries auto-refresh and today resets
+  const today = useDayChange();
+
+  // Auto-open the daily log sheet once per new day if it hasn't been filled yet
+  useEffect(() => {
+    if (!userId || todayLoading) return;
+    if (todayLog) return; // already logged today
+    const flagKey = `daily-log-prompted-${userId}-${today}`;
+    if (typeof window === "undefined") return;
+    if (window.sessionStorage.getItem(flagKey)) return;
+    // Defer slightly so the dashboard finishes its initial paint
+    const t = setTimeout(() => {
+      setShowQuickLog(true);
+      window.sessionStorage.setItem(flagKey, "1");
+    }, 600);
+    return () => clearTimeout(t);
+  }, [userId, today, todayLog, todayLoading]);
 
   // Observe scroll animations
   useEffect(() => {
@@ -261,20 +280,50 @@ export default function PatientDashboard() {
 
             return (
               <>
+                {/* Required daily log banner — shown until today's log is filled */}
+                {!todayLog && (
+                  <div className="scroll-fade-in rounded-2xl border-2 border-warning/50 bg-gradient-to-br from-warning/15 via-warning/5 to-transparent p-4 shadow-soft">
+                    <div className="flex items-start gap-3">
+                      <div className="h-10 w-10 rounded-xl bg-warning/20 flex items-center justify-center flex-shrink-0">
+                        <AlertCircle className="h-5 w-5 text-warning" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-bold text-foreground">
+                          {t('quickLog.requiredTitle')}
+                        </p>
+                        <p className="text-xs text-muted-foreground mt-0.5">
+                          {t('quickLog.requiredDesc')}
+                        </p>
+                        <Button
+                          onClick={() => setShowQuickLog(true)}
+                          size="sm"
+                          className="mt-3 h-9 rounded-xl text-xs font-semibold press-zoom"
+                        >
+                          <PlusCircle className="h-4 w-4 mr-1.5" />
+                          {t('quickLog.fillNow')}
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 {/* Health Score Ring - HERO */}
                 <div className="scroll-fade-in">
                   <HealthScoreRing result={scoreResult} />
                 </div>
 
-                {/* Quick Log CTA */}
-                <Button
-                  onClick={() => setShowQuickLog(true)}
-                  className="w-full h-12 rounded-2xl text-sm font-semibold shadow-soft press-zoom"
-                  size="lg"
-                >
-                  <PlusCircle className="h-5 w-5 mr-2" />
-                  {todayLog ? t('quickLog.updateButton') : t('quickLog.openButton')}
-                </Button>
+                {/* Quick Log CTA — shown only after today's log exists, as an update path */}
+                {todayLog && (
+                  <Button
+                    onClick={() => setShowQuickLog(true)}
+                    variant="outline"
+                    className="w-full h-12 rounded-2xl text-sm font-semibold shadow-soft press-zoom"
+                    size="lg"
+                  >
+                    <PlusCircle className="h-5 w-5 mr-2" />
+                    {t('quickLog.updateButton')}
+                  </Button>
+                )}
 
                 {/* Smart Alerts */}
                 {smartAlerts.length > 0 && (
