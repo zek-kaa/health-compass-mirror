@@ -280,20 +280,50 @@ export default function PatientDashboard() {
 
             return (
               <>
+                {/* Required daily log banner — shown until today's log is filled */}
+                {!todayLog && (
+                  <div className="scroll-fade-in rounded-2xl border-2 border-warning/50 bg-gradient-to-br from-warning/15 via-warning/5 to-transparent p-4 shadow-soft animate-pulse-slow">
+                    <div className="flex items-start gap-3">
+                      <div className="h-10 w-10 rounded-xl bg-warning/20 flex items-center justify-center flex-shrink-0">
+                        <AlertCircle className="h-5 w-5 text-warning" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-bold text-foreground">
+                          {t('quickLog.requiredTitle')}
+                        </p>
+                        <p className="text-xs text-muted-foreground mt-0.5">
+                          {t('quickLog.requiredDesc')}
+                        </p>
+                        <Button
+                          onClick={() => setShowQuickLog(true)}
+                          size="sm"
+                          className="mt-3 h-9 rounded-xl text-xs font-semibold press-zoom"
+                        >
+                          <PlusCircle className="h-4 w-4 mr-1.5" />
+                          {t('quickLog.fillNow')}
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 {/* Health Score Ring - HERO */}
                 <div className="scroll-fade-in">
                   <HealthScoreRing result={scoreResult} />
                 </div>
 
-                {/* Quick Log CTA */}
-                <Button
-                  onClick={() => setShowQuickLog(true)}
-                  className="w-full h-12 rounded-2xl text-sm font-semibold shadow-soft press-zoom"
-                  size="lg"
-                >
-                  <PlusCircle className="h-5 w-5 mr-2" />
-                  {todayLog ? t('quickLog.updateButton') : t('quickLog.openButton')}
-                </Button>
+                {/* Quick Log CTA — shown only after today's log exists, as an update path */}
+                {todayLog && (
+                  <Button
+                    onClick={() => setShowQuickLog(true)}
+                    variant="outline"
+                    className="w-full h-12 rounded-2xl text-sm font-semibold shadow-soft press-zoom"
+                    size="lg"
+                  >
+                    <PlusCircle className="h-5 w-5 mr-2" />
+                    {t('quickLog.updateButton')}
+                  </Button>
+                )}
 
                 {/* Smart Alerts */}
                 {smartAlerts.length > 0 && (
