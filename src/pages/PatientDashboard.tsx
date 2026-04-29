@@ -439,8 +439,15 @@ export default function PatientDashboard() {
                 </div>
               )}
 
+              {activeFeature === "assessments" && (
+                <div className="py-2">
+                  <AssessmentsHub />
+                </div>
+              )}
+
               {activeFeature === "insights" && (
                 <div className="space-y-5 py-4 animate-fade-in">
+                  <InsightsTrends />
                   {insightData.length === 0 ? (
                     <div className="text-center py-12 px-4 text-muted-foreground text-sm rounded-2xl border border-dashed border-border/60 bg-card/30">
                       <BarChart className="h-10 w-10 mx-auto mb-3 opacity-30" />
@@ -505,6 +512,11 @@ export default function PatientDashboard() {
 
               {activeFeature === "calculators" && (
                 <div className="space-y-5 py-4 animate-fade-in">
+                  <CalorieCalculator
+                    initialWeight={latestEntry?.weight ?? 70}
+                    initialHeight={height}
+                    initialAge={age}
+                  />
                   <div className="grid gap-5 lg:grid-cols-3">
                      <CalculatorCard title={t('patient.bmi')} value={`${bmiValue}`} status={translateStatusLabel(bmiCategory, t)}
                       description={t('patient.bmiDesc')} tone={bmiCategory === "Normal" ? "success" : "warning"}>
