@@ -7,7 +7,6 @@ import { AssessmentRunner } from "./AssessmentRunner";
 import { Salad, Dumbbell, Moon, Droplet, Brain, Heart, Activity, Shield, ChevronRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { formatDistanceToNowStrict } from "date-fns";
-import { getDateLocale } from "@/lib/i18n-utils";
 
 const ICONS = {
   salad: Salad,
@@ -26,7 +25,7 @@ interface Props {
 }
 
 export function AssessmentsHub({ initialType }: Props) {
-  const { t, lang } = useI18n();
+  const { t } = useI18n();
   const { user } = useAuth();
   const userId = user?.id;
   const { data: latest = {} } = useLatestAssessments(userId);
@@ -102,7 +101,6 @@ export function AssessmentsHub({ initialType }: Props) {
                       <span>
                         {formatDistanceToNowStrict(new Date(last.created_at), {
                           addSuffix: true,
-                          locale: getDateLocale(lang),
                         })}
                       </span>
                     </div>
