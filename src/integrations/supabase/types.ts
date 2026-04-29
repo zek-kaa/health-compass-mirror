@@ -143,6 +143,45 @@ export type Database = {
           },
         ]
       }
+      assessments: {
+        Row: {
+          answers: Json
+          created_at: string
+          id: string
+          raw_score: number | null
+          recommendations: Json
+          risk_level: string
+          score: number
+          type: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          answers?: Json
+          created_at?: string
+          id?: string
+          raw_score?: number | null
+          recommendations?: Json
+          risk_level?: string
+          score?: number
+          type: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          answers?: Json
+          created_at?: string
+          id?: string
+          raw_score?: number | null
+          recommendations?: Json
+          risk_level?: string
+          score?: number
+          type?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       daily_logs: {
         Row: {
           created_at: string
@@ -190,6 +229,7 @@ export type Database = {
       }
       health_entries: {
         Row: {
+          cholesterol: number | null
           created_at: string
           diastolic: number
           heart_rate: number
@@ -202,6 +242,7 @@ export type Database = {
           weight: number
         }
         Insert: {
+          cholesterol?: number | null
           created_at?: string
           diastolic: number
           heart_rate: number
@@ -214,6 +255,7 @@ export type Database = {
           weight: number
         }
         Update: {
+          cholesterol?: number | null
           created_at?: string
           diastolic?: number
           heart_rate?: number
@@ -234,6 +276,33 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      health_scores: {
+        Row: {
+          breakdown: Json
+          computed_for_date: string
+          created_at: string
+          id: string
+          score: number
+          user_id: string
+        }
+        Insert: {
+          breakdown?: Json
+          computed_for_date?: string
+          created_at?: string
+          id?: string
+          score?: number
+          user_id: string
+        }
+        Update: {
+          breakdown?: Json
+          computed_for_date?: string
+          created_at?: string
+          id?: string
+          score?: number
+          user_id?: string
+        }
+        Relationships: []
       }
       medical_history: {
         Row: {
@@ -335,36 +404,42 @@ export type Database = {
       }
       profiles: {
         Row: {
+          activity_level: string | null
           address: string | null
           avatar_url: string | null
           created_at: string
           date_of_birth: string | null
           full_name: string
           gender: string | null
+          height_cm: number | null
           id: string
           phone: string | null
           updated_at: string
           user_id: string
         }
         Insert: {
+          activity_level?: string | null
           address?: string | null
           avatar_url?: string | null
           created_at?: string
           date_of_birth?: string | null
           full_name?: string
           gender?: string | null
+          height_cm?: number | null
           id?: string
           phone?: string | null
           updated_at?: string
           user_id: string
         }
         Update: {
+          activity_level?: string | null
           address?: string | null
           avatar_url?: string | null
           created_at?: string
           date_of_birth?: string | null
           full_name?: string
           gender?: string | null
+          height_cm?: number | null
           id?: string
           phone?: string | null
           updated_at?: string

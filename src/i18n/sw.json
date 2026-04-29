@@ -118,7 +118,8 @@
 "settings": "Mipangilio",
 "addData": "Ongeza Data ya Afya",
 "insights": "Mwenendo wa Afya",
-"calculators": "Zana za Afya"
+"calculators": "Zana za Afya",
+"assessments": "Tathmini ya Afya"
 },
 "settings": {
 "title": "Mipangilio",
@@ -203,7 +204,9 @@
 "height": "Urefu (cm)",
 "age": "Umri",
 "heartRate": "Mapigo",
-"heartRateLabel": "Mapigo"
+"heartRateLabel": "Mapigo",
+"assessmentsTitle": "Tathmini za Afya",
+"assessmentsDesc": "Pima hatari ya kisukari, moyo, msongo na zaidi."
 },
 "health": {
 "title": "Data ya Afya",
@@ -380,6 +383,253 @@
 "startStreak": "Anza streak yako",
 "bmi": "BMI",
 "logVitals": "Andika vipimo vyako"
+},
+"assess": {
+"hub": {
+"heading": "Tathmini za Afya",
+"subtitle": "Jibu maswali machache upate alama ya hatari na ushauri wa kibinafsi.",
+"score": "Alama",
+"disclaimer": "Tathmini hizi ni za uchunguzi tu, sio uchunguzi wa kimatibabu. Wasiliana na daktari kwa msaada zaidi."
+},
+"runner": {
+"question": "Swali",
+"back": "Nyuma",
+"next": "Mbele",
+"finish": "Maliza",
+"done": "Sawa",
+"score": "Alama yako",
+"outOf100": "kati ya 100",
+"risk": "Kiwango cha hatari",
+"recommendations": "Mapendekezo",
+"resultSubtitle": "Hapa ni matokeo yako",
+"saveFailed": "Imeshindwa kuhifadhi",
+"loginRequired": "Ingia kwanza"
+},
+"risk": { "low": "Chini", "moderate": "Wastani", "high": "Juu" },
+"common": {
+"never": "Kamwe", "sometimes": "Mara chache", "often": "Mara nyingi", "daily": "Kila siku",
+"yes": "Ndiyo", "no": "Hapana", "unknown": "Sijui"
+},
+"unit": { "minWeek": "dak/wiki", "hours": "saa", "glasses": "glasi" },
+"nutrition": {
+"title": "Lishe", "subtitle": "Tabia za kula kwa wiki nzima",
+"q1": "Unakula matunda na mboga ngapi kwa siku?",
+"q1.a0": "Hakuna", "q1.a1": "1-2 vipande", "q1.a2": "3-4 vipande", "q1.a3": "5+ vipande",
+"q2": "Je, unakula nafaka nzima (ugali wa dona, mtama)?",
+"q3": "Je, unakula protini bora (samaki, kuku, maharage)?",
+"q4": "Je, unakunywa vinywaji vyenye sukari (soda, juisi)?",
+"q5": "Je, unakula vyakula vya haraka au vya kukaanga?",
+"q6": "Unatumia chumvi kiasi gani kwenye chakula?",
+"q6.a0": "Kidogo sana", "q6.a1": "Wastani", "q6.a2": "Nyingi", "q6.a3": "Nyingi sana",
+"q7": "Je, unakula chamcha (breakfast)?"
+},
+"exercise": {
+"title": "Mazoezi", "subtitle": "Kulingana na miongozo ya WHO",
+"q1": "Mazoezi ya wastani kwa wiki (kutembea haraka, kufanya kazi za nyumba)?",
+"q2": "Mazoezi makali kwa wiki (kukimbia, kuogelea kasi)?",
+"q3": "Siku za mazoezi ya nguvu kwa wiki?",
+"q3.a0": "Hakuna", "q3.a1": "Siku 1", "q3.a2": "Siku 2", "q3.a3": "Siku 3+",
+"q4": "Saa za kukaa bila kusonga kwa siku?",
+"q4.a0": "Chini ya 4", "q4.a1": "4-6", "q4.a2": "6-8", "q4.a3": "8+"
+},
+"sleep": {
+"title": "Usingizi", "subtitle": "Ubora wa usingizi",
+"q1": "Saa za usingizi kwa usiku?",
+"q2": "Muda wa kupata usingizi?",
+"q2.a0": "<15 dak", "q2.a1": "15-30", "q2.a2": "30-60", "q2.a3": ">60",
+"q3": "Je, unaamka usiku?",
+"q4": "Ubora wa usingizi?",
+"q4.a0": "Bora", "q4.a1": "Mzuri", "q4.a2": "Mbaya", "q4.a3": "Mbaya sana",
+"q5": "Je, una usingizi mchana?"
+},
+"hydration": {
+"title": "Maji", "subtitle": "Unywaji wa maji + rangi ya mkojo",
+"q1": "Glasi za maji kwa siku?",
+"q2": "Rangi ya mkojo wako?",
+"q2.a0": "Manjano hafifu", "q2.a1": "Manjano", "q2.a2": "Manjano iliyokolea", "q2.a3": "Karibu kahawia",
+"q3": "Je, unahisi kiu mara kwa mara?"
+},
+"stress": {
+"title": "Msongo", "subtitle": "Hisia za wiki iliyopita",
+"q1": "Umeshikwa na hisia za kuzidiwa?",
+"q2": "Umeweza kudhibiti mambo yako?",
+"q3": "Umekasirika kirahisi?",
+"q4": "Umepata mapumziko ya kutosha?",
+"q5": "Umeweza kushughulikia changamoto?"
+},
+"phq9": {
+"title": "Afya ya Akili (PHQ-9)", "subtitle": "Uchunguzi wa hali ya huzuni",
+"opt0": "Hapana kabisa", "opt1": "Siku chache", "opt2": "Zaidi ya nusu", "opt3": "Karibu kila siku",
+"q1": "Kupoteza hamu ya mambo?",
+"q2": "Kuhisi huzuni au kukata tamaa?",
+"q3": "Shida ya usingizi?",
+"q4": "Kuhisi uchovu au nguvu kidogo?",
+"q5": "Hamu mbaya ya chakula au kula kupita kiasi?",
+"q6": "Kujihisi mbaya kuhusu nafsi yako?",
+"q7": "Shida ya kuzingatia?",
+"q8": "Kusonga taratibu sana au kutotulia?",
+"q9": "Mawazo ya kujidhuru?"
+},
+"gad7": {
+"title": "Wasiwasi (GAD-7)", "subtitle": "Uchunguzi wa wasiwasi",
+"q1": "Kuhisi wasiwasi au mkazo?",
+"q2": "Kushindwa kuzuia wasiwasi?",
+"q3": "Kuwa na wasiwasi kuhusu mambo mengi?",
+"q4": "Shida ya kupumzika?",
+"q5": "Kutotulia kiasi cha kushindwa kukaa?",
+"q6": "Kukasirika kirahisi?",
+"q7": "Kuogopa kitu kibaya kitatokea?"
+},
+"findrisc": {
+"title": "Hatari ya Kisukari", "subtitle": "Tathmini ya FINDRISC",
+"age": "Umri wako?",
+"age.a0": "<45", "age.a1": "45-54", "age.a2": "55-64", "age.a3": "65+",
+"bmi": "BMI yako?",
+"bmi.a0": "<25", "bmi.a1": "25-30", "bmi.a2": "30+",
+"waist": "Mzingo wa kiuno?",
+"waist.a0": "Mdogo", "waist.a1": "Wastani", "waist.a2": "Mkubwa",
+"exercise": "Je, unafanya dakika 30 za mazoezi kwa siku?",
+"exercise.yes": "Ndiyo", "exercise.no": "Hapana",
+"veg": "Je, unakula matunda/mboga kila siku?",
+"veg.daily": "Kila siku", "veg.notdaily": "Sio kila siku",
+"bp": "Je, umewahi kupewa dawa za shinikizo la damu?",
+"glucose": "Je, umewahi kuwa na sukari ya juu?",
+"family": "Familia ina kisukari?",
+"family.no": "Hapana", "family.distant": "Mbali (babu/bibi)", "family.close": "Karibu (mzazi/ndugu)"
+},
+"heart": {
+"title": "Hatari ya Moyo", "subtitle": "Vigezo vya mtindo wa maisha",
+"smoking": "Uvutaji sigara?",
+"smoking.never": "Sijawahi", "smoking.former": "Niliwahi", "smoking.current": "Naendelea",
+"bp": "Una shinikizo la damu juu?",
+"chol": "Una cholesterol juu?",
+"diabetes": "Una kisukari?",
+"family": "Familia ya karibu ina ugonjwa wa moyo?",
+"activity": "Kiwango cha shughuli?",
+"activity.active": "Mtaratibu", "activity.moderate": "Wastani", "activity.sedentary": "Mdogo"
+},
+"cancer": {
+"title": "Mtindo wa Maisha (Saratani)", "subtitle": "Vigezo vya mtindo wa maisha tu",
+"tobacco": "Tumia tumbaku?",
+"alcohol": "Unakunywa pombe?",
+"processed": "Unakula nyama iliyochakatwa (sausage, bacon)?",
+"sun": "Je, unalinda ngozi yako kutokana na jua?",
+"sun.protected": "Daima", "sun.sometimes": "Wakati mwingine", "sun.unprotected": "Hapana",
+"screening": "Je, umewahi kufanya uchunguzi wa saratani?",
+"family": "Familia ya karibu ina historia ya saratani?"
+}
+},
+"rec": {
+"heading": "Mapendekezo ya leo",
+"nutrition": {
+"fruitsVeg": "Ongeza matunda na mboga - lengo ni vipande 5 kwa siku.",
+"lessSugar": "Punguza vinywaji vyenye sukari. Badilisha na maji.",
+"lessFastFood": "Punguza vyakula vya haraka kwa nusu wiki ijayo.",
+"lessSalt": "Punguza chumvi - epuka vyakula vya kuchakatwa.",
+"wholeGrains": "Badilisha mchele mweupe na ugali wa dona au mtama.",
+"keepUp": "Lishe yako ni nzuri - endelea hivyo!"
+},
+"exercise": {
+"aerobic": "Lengo: dakika 150 za mazoezi ya wastani kwa wiki (WHO).",
+"strength": "Ongeza mazoezi ya nguvu (push-ups, squats) angalau siku 2 kwa wiki.",
+"lessSitting": "Inuka kila baada ya saa 1 ya kukaa, tembea dakika 2.",
+"keepUp": "Mazoezi yako yanafikia kiwango cha WHO. Endelea!"
+},
+"sleep": {
+"duration": "Lala saa 7-9 kwa usiku kwa afya bora.",
+"latency": "Epuka skrini saa 1 kabla ya kulala. Jaribu kusoma.",
+"wake": "Hakikisha chumba ni baridi (18-20°C) na giza.",
+"quality": "Wahi kulala kila siku kwa wakati mmoja.",
+"keepUp": "Usingizi wako ni mzuri - endelea hivyo!"
+},
+"hydration": {
+"moreWater": "Lengo: glasi 8 za maji kwa siku. Beba chupa popote.",
+"urineDark": "Mkojo mweusi unaonyesha unahitaji maji zaidi.",
+"thirstFreq": "Usisubiri kiu - kunywa maji kabla ya kuhisi kiu.",
+"keepUp": "Maji yako yako sawa - endelea!"
+},
+"stress": {
+"breath": "Pumzi za kina: vuta sec 4, shika sec 4, toa sec 6.",
+"walk": "Tembea dakika 15 nje - hewa safi inasaidia.",
+"talk": "Ongea na rafiki au familia kuhusu unavyohisi.",
+"professional": "Tafuta msaada wa mtaalamu wa afya ya akili.",
+"keepUp": "Unashughulikia msongo vizuri!"
+},
+"phq9": {
+"selfCare": "Anzisha utaratibu wa kujitunza kila siku.",
+"support": "Wasiliana na watu unaowaamini kwa msaada.",
+"professional": "Tafuta msaada wa mtaalamu - hii ni hatua ya ujasiri.",
+"urgent": "MUHIMU: Ongea na mtaalamu mara moja. Piga simu ya msaada.",
+"keepUp": "Hali yako ya akili ni nzuri - endelea kujitunza."
+},
+"gad7": {
+"breathing": "Jaribu mazoezi ya kupumua kila siku.",
+"support": "Ongea na rafiki au mtaalamu kuhusu wasiwasi wako.",
+"professional": "Tafuta msaada wa mtaalamu wa afya ya akili.",
+"keepUp": "Unadhibiti wasiwasi vizuri!"
+},
+"findrisc": {
+"weight": "Punguza uzito kidogo kupunguza hatari.",
+"exercise": "Mazoezi ya kawaida hupunguza hatari ya kisukari.",
+"veg": "Kula matunda na mboga kila siku.",
+"test": "Pima sukari ya damu - hatari yako ni ya wastani au juu.",
+"keepUp": "Hatari yako ni ndogo - endelea hivyo!"
+},
+"heart": {
+"quitSmoking": "Acha sigara - ndiyo hatua muhimu zaidi.",
+"bp": "Dhibiti shinikizo la damu - punguza chumvi na fanya mazoezi.",
+"chol": "Pima cholesterol na fuata ushauri wa daktari.",
+"activity": "Ongeza shughuli za kimwili kila siku.",
+"consult": "Wasiliana na daktari kwa tathmini kamili.",
+"keepUp": "Moyo wako uko salama - endelea!"
+},
+"cancer": {
+"tobacco": "Acha tumbaku - hupunguza hatari ya saratani sana.",
+"alcohol": "Punguza pombe - chini ya glasi 1 kwa siku.",
+"processed": "Punguza nyama iliyochakatwa.",
+"sun": "Vaa nguo nzito au tumia kinga ya jua.",
+"screening": "Fanya uchunguzi wa kawaida wa saratani.",
+"keepUp": "Mtindo wako wa maisha unapunguza hatari!"
+}
+},
+"insights": {
+"scoreTrendTitle": "Mwenendo wa Alama",
+"last14days": "Siku 14 zilizopita",
+"behaviorTitle": "Tabia vs Matokeo",
+"behaviorDesc": "Linganisha tabia zako za kila siku na alama yako.",
+"riskEvolutionTitle": "Mabadiliko ya Hatari",
+"empty": "Hakuna data ya kutosha",
+"emptyHint": "Andika data ya kila siku au fanya tathmini upate insights."
+},
+"calc": {
+"weight": "Uzito (kg)", "height": "Urefu (cm)", "age": "Umri",
+"sex": "Jinsia", "male": "Mwanaume", "female": "Mwanamke",
+"activity": "Kiwango cha shughuli",
+"activity.sedentary": "Bila shughuli (kazi za ofisi)",
+"activity.light": "Shughuli ndogo (mazoezi 1-3/wiki)",
+"activity.moderate": "Wastani (mazoezi 3-5/wiki)",
+"activity.active": "Mtaratibu (mazoezi 6-7/wiki)",
+"activity.veryActive": "Sana (mazoezi mara mbili/siku)",
+"bmi": "BMI", "bmr": "BMR", "tdee": "Kalori/Siku",
+"macros": "Mgawanyo wa Lishe",
+"carbs": "Wanga", "protein": "Protini", "fat": "Mafuta",
+"foodIdeas": "Mlo wa Mfano (TZ)",
+"foodNote": "Idadi ya kalori ni makadirio - inaweza kutofautiana."
+},
+"bmi": {
+"underweight": "Uzito mdogo", "normal": "Kawaida",
+"overweight": "Uzito mkubwa", "obese": "Unene kupita kiasi"
+},
+"food": {
+"ugali": "Ugali", "wali": "Wali", "chapati": "Chapati",
+"ndizi_kupika": "Ndizi za kupika", "viazi": "Viazi",
+"maharage": "Maharage", "samaki": "Samaki", "kuku": "Kuku",
+"nyama": "Nyama ya ng'ombe", "yai": "Yai",
+"mchicha": "Mchicha", "sukuma": "Sukuma wiki",
+"embe": "Embe", "ndizi_mbivu": "Ndizi mbivu", "papai": "Papai",
+"chai_sukari": "Chai ya sukari", "soda": "Soda",
+"mandazi": "Mandazi", "kashata": "Kashata",
+"serving": { "cup": "kikombe", "piece": "kipande", "bottle": "chupa" }
 }
 }
 
