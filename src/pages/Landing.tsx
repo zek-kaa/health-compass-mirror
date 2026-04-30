@@ -202,7 +202,7 @@ export default function Landing() {
       { node: heroBgRef.current, speed: 0.08 },
       { node: heroMidRef.current, speed: 0.16 },
       { node: heroFgRef.current, speed: 0.26 },
-    ].filter((item): item is { node: HTMLElement; speed: number } => Boolean(item.node));
+    ].filter((item): item is { node: HTMLDivElement; speed: number } => Boolean(item.node));
 
     const updateParallax = () => {
       const scrollY = window.scrollY;
