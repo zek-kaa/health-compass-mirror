@@ -317,31 +317,25 @@ export default function Landing() {
                   </div>
                 </div>
                 <div className="mt-8 scroll-reveal delay-600 overflow-hidden">
-                  <div className="hero-hero-cards grid grid-cols-4 gap-2">
+                  <div className="hero-hero-cards grid grid-cols-3 gap-2">
                     {[
                       {
-                        title: "Real-time Monitoring",
-                        subtitle: "BP, Sugar, BMI, Sleep",
-                        stat: "4 live metrics",
+                        title: t('landing.card1Title'),
+                        subtitle: t('landing.card1Subtitle'),
+                        stat: "Sukari · BP · BMI",
                         tone: "from-blue-500 to-sky-500",
                       },
                       {
-                        title: "Risk Screening",
-                        subtitle: "Heart, Diabetes, Mental Health",
-                        stat: "Low risk",
+                        title: t('landing.card2Title'),
+                        subtitle: t('landing.card2Subtitle'),
+                        stat: "Kisukari · Moyo · Saratani",
                         tone: "from-cyan-500 to-blue-600",
                       },
                       {
-                        title: "Lifestyle Optimization",
-                        subtitle: "Nutrition, Exercise, Hydration",
-                        stat: "Personalized plan",
+                        title: t('landing.card3Title'),
+                        subtitle: t('landing.card3Subtitle'),
+                        stat: "Mazoezi · Lishe · Usingizi",
                         tone: "from-emerald-500 to-teal-500",
-                      },
-                      {
-                        title: "Insights & Reports",
-                        subtitle: "Trends, Correlations, Alerts",
-                        stat: "Weekly summary",
-                        tone: "from-blue-600 to-slate-700",
                       },
                     ].map((item, index) => (
                       <div
@@ -380,55 +374,43 @@ export default function Landing() {
               </h2>
               <p className="text-sm sm:text-lg text-slate-600">{t('landing.description')}</p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 items-start scroll-reveal delay-200">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 items-start scroll-reveal delay-200">
               {[
                 {
-                  icon: Stethoscope,
-                  title: "Health Monitoring",
-                  desc: "Track BP, Sugar, BMI and Sleep with daily score insights.",
-                  stat: "4 active metrics",
+                  icon: HeartPulse,
+                  title: t('landing.card1Title'),
+                  desc: t('landing.card1Desc'),
+                  stat: t('landing.card1Subtitle'),
                   details: [
-                    "Real-time vitals capture with automatic trend flags.",
-                    "Sleep and recovery insight for smarter routine choices.",
-                    "Secure summary reports for patients and clinicians.",
+                    t('landing.card1Detail1'),
+                    t('landing.card1Detail2'),
+                    t('landing.card1Detail3'),
                   ],
                   color: "from-blue-500 to-sky-500",
                 },
                 {
-                  icon: Heart,
-                  title: "Risk Screening",
-                  desc: "Spot heart, diabetes and mental health risks early.",
-                  stat: "Risk level: Low",
+                  icon: Shield,
+                  title: t('landing.card2Title'),
+                  desc: t('landing.card2Desc'),
+                  stat: t('landing.card2Subtitle'),
                   details: [
-                    "Predictive screening with personalized risk levels.",
-                    "Heart and metabolic health signals in one dashboard.",
-                    "Alerts and actionable recommendations for prevention.",
+                    t('landing.card2Detail1'),
+                    t('landing.card2Detail2'),
+                    t('landing.card2Detail3'),
                   ],
-                  color: "from-cyan-500 to-blue-500",
+                  color: "from-cyan-500 to-blue-600",
                 },
                 {
                   icon: Activity,
-                  title: "Lifestyle Optimization",
-                  desc: "Nutrition, exercise and hydration plans tuned daily.",
-                  stat: "Plan ready",
+                  title: t('landing.card3Title'),
+                  desc: t('landing.card3Desc'),
+                  stat: t('landing.card3Subtitle'),
                   details: [
-                    "Smart guidance for meals, movement and fluid balance.",
-                    "Behavioral nudges and performance summaries.",
-                    "Integrated support for healthier routines every day.",
+                    t('landing.card3Detail1'),
+                    t('landing.card3Detail2'),
+                    t('landing.card3Detail3'),
                   ],
                   color: "from-emerald-500 to-teal-500",
-                },
-                {
-                  icon: BarChart3,
-                  title: "Insights & Reports",
-                  desc: "Actionable trends and clinical-quality health reports.",
-                  stat: "52 insights/week",
-                  details: [
-                    "Interactive charts and trend-driven health summaries.",
-                    "Correlation reports for lifestyle, sleep and vitals.",
-                    "Executive-ready dashboards for care planning.",
-                  ],
-                  color: "from-blue-600 to-slate-600",
                 },
               ].map((feature, i) => (
                 <ExpandableFeatureCard
