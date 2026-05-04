@@ -16,7 +16,7 @@ import { QuickLogSheet } from "@/components/health/QuickLogSheet";
 import { SmartAlertsCard } from "@/components/health/SmartAlertsCard";
 import { AlertsTimeline } from "@/components/health/AlertsTimeline";
 import { RecommendationsCard } from "@/components/health/RecommendationsCard";
-import { QuickStatsGrid } from "@/components/health/QuickStatsGrid";
+
 import { computeHealthScore, generateSmartAlerts, generateRecommendations } from "@/lib/health-score";
 import { AssessmentsHub } from "@/components/health/AssessmentsHub";
 import { CalorieCalculator } from "@/components/health/CalorieCalculator";
