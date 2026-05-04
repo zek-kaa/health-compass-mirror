@@ -342,15 +342,12 @@ export default function PatientDashboard() {
                   <RecommendationsCard tips={tips} userId={userId} />
                 </div>
 
-                {/* Alerts & Reminders Timeline */}
-                <div className="scroll-fade-in">
-                  <AlertsTimeline alerts={patientAlertsAll} />
-                </div>
-
-                {/* Quick Stats Grid */}
-                <div className="scroll-fade-in">
-                  <QuickStatsGrid logs={dailyLogs} healthEntries={healthEntries} heightCm={height} />
-                </div>
+                {/* Alerts & Reminders Timeline — only when there are alerts */}
+                {patientAlertsAll.length > 0 && (
+                  <div className="scroll-fade-in">
+                    <AlertsTimeline alerts={patientAlertsAll} />
+                  </div>
+                )}
               </>
             );
           })()}
