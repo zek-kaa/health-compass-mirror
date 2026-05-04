@@ -543,6 +543,101 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* Lifestyle Tools Section */}
+      <section className="relative py-12 sm:py-20 px-4 sm:px-6 z-10 scroll-reveal delay-100">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100/80 backdrop-blur-sm border border-emerald-200 mb-4">
+              <Sparkles className="w-3.5 h-3.5 text-emerald-700" />
+              <span className="text-[10px] sm:text-xs font-semibold text-emerald-700 tracking-wider uppercase">{t('landing.tools.smartNote')}</span>
+            </div>
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 mb-3">{t('landing.tools.heading')}</h2>
+            <p className="text-sm sm:text-base text-slate-600">{t('landing.tools.subheading')}</p>
+            <p className="text-xs sm:text-sm text-slate-500 mt-2">{t('landing.tools.intro')}</p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+            {[
+              { icon: Dumbbell, title: t('landing.tools.exerciseTitle'), desc: t('landing.tools.exerciseDesc'), tone: "from-blue-500 to-sky-500" },
+              { icon: HeartPulse, title: t('landing.tools.healthTitle'), desc: t('landing.tools.healthDesc'), tone: "from-cyan-500 to-blue-600" },
+              { icon: Moon, title: t('landing.tools.sleepTitle'), desc: t('landing.tools.sleepDesc'), tone: "from-indigo-500 to-purple-500" },
+              { icon: Brain, title: t('landing.tools.stressTitle'), desc: t('landing.tools.stressDesc'), tone: "from-pink-500 to-rose-500" },
+              { icon: Wind, title: t('landing.tools.airTitle'), desc: t('landing.tools.airDesc'), tone: "from-emerald-500 to-teal-500" },
+              { icon: ClipboardList, title: t('landing.tools.productivityTitle'), desc: t('landing.tools.productivityDesc'), tone: "from-amber-500 to-orange-500" },
+            ].map((item, i) => (
+              <div key={i} className="rounded-2xl border border-slate-200/70 bg-white/95 p-4 shadow-floating hover:-translate-y-1 hover:shadow-glow transition-all">
+                <div className={`inline-flex h-10 w-10 rounded-xl bg-gradient-to-br ${item.tone} text-white items-center justify-center shadow-lg shadow-blue-500/20 mb-3`}>
+                  <item.icon className="h-5 w-5" />
+                </div>
+                <p className="text-sm font-bold text-slate-900">{item.title}</p>
+                <p className="text-xs text-slate-600 mt-1">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Doctor Preparation — Coming Soon */}
+      <section className="relative py-12 sm:py-20 px-4 sm:px-6 z-10 scroll-reveal delay-100">
+        <div className="max-w-4xl mx-auto">
+          <div className="relative rounded-3xl border border-blue-200 bg-gradient-to-br from-white via-blue-50/40 to-white p-6 sm:p-10 shadow-floating overflow-hidden">
+            <div className="absolute -top-16 -right-16 w-48 h-48 rounded-full bg-blue-300/30 blur-3xl pointer-events-none" />
+            <div className="relative flex flex-col sm:flex-row gap-5 sm:gap-7 items-start">
+              <div className="h-12 w-12 sm:h-14 sm:w-14 rounded-2xl bg-gradient-to-br from-blue-600 to-blue-800 text-white flex items-center justify-center shadow-lg shadow-blue-500/30 shrink-0">
+                <Stethoscope className="h-6 w-6 sm:h-7 sm:w-7" />
+              </div>
+              <div className="flex-1">
+                <div className="flex flex-wrap items-center gap-2 mb-2">
+                  <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 text-amber-800 px-3 py-1 text-[10px] font-bold tracking-wider uppercase">
+                    <Sparkles className="h-3 w-3" /> {t('landing.doctorPrep.comingSoon')}
+                  </span>
+                </div>
+                <h3 className="text-xl sm:text-3xl font-black text-slate-900">{t('landing.doctorPrep.heading')}</h3>
+                <p className="text-sm sm:text-base text-blue-700 font-semibold mt-1">{t('landing.doctorPrep.subheading')}</p>
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed mt-3">{t('landing.doctorPrep.desc')}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Expert Section */}
+      <section className="relative py-12 sm:py-16 px-4 sm:px-6 z-10 scroll-reveal delay-100">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100/80 backdrop-blur-sm border border-blue-200 mb-4">
+            <Award className="w-3.5 h-3.5 text-blue-700" />
+            <span className="text-[10px] sm:text-xs font-semibold text-blue-700 tracking-wider uppercase">{t('landing.expert.heading')}</span>
+          </div>
+          <div className="rounded-3xl border border-slate-200 bg-white/90 p-6 sm:p-10 shadow-floating">
+            <div className="h-16 w-16 sm:h-20 sm:w-20 mx-auto rounded-full bg-gradient-to-br from-blue-600 to-blue-800 text-white flex items-center justify-center shadow-lg shadow-blue-500/30 mb-4">
+              <Stethoscope className="h-8 w-8 sm:h-10 sm:w-10" />
+            </div>
+            <h3 className="text-xl sm:text-2xl font-black text-slate-900">{t('landing.expert.name')}</h3>
+            <p className="text-sm font-semibold text-blue-700 mt-1">{t('landing.expert.credentials')}</p>
+            <p className="text-sm sm:text-base text-slate-600 mt-2">{t('landing.expert.role')}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Disclaimer */}
+      <section className="relative py-10 sm:py-14 px-4 sm:px-6 z-10 scroll-reveal delay-100">
+        <div className="max-w-4xl mx-auto">
+          <div className="rounded-3xl border border-amber-200 bg-amber-50/60 p-5 sm:p-8">
+            <div className="flex items-start gap-3 sm:gap-4">
+              <div className="h-9 w-9 sm:h-10 sm:w-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
+                <AlertTriangle className="h-5 w-5" />
+              </div>
+              <div className="space-y-2 sm:space-y-3">
+                <h4 className="text-base sm:text-lg font-black text-amber-900">{t('landing.disclaimer.heading')}</h4>
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">{t('landing.disclaimer.p1')}</p>
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">{t('landing.disclaimer.p2')}</p>
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">{t('landing.disclaimer.p3')}</p>
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">{t('landing.disclaimer.p4')}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="relative border-t border-white/40 backdrop-blur-xl z-10 py-8 sm:py-12 px-4 sm:px-6 bg-white/20">
         <div className="max-w-6xl mx-auto">
