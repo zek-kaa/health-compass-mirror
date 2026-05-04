@@ -16,7 +16,7 @@ import { QuickLogSheet } from "@/components/health/QuickLogSheet";
 import { SmartAlertsCard } from "@/components/health/SmartAlertsCard";
 import { AlertsTimeline } from "@/components/health/AlertsTimeline";
 import { RecommendationsCard } from "@/components/health/RecommendationsCard";
-import { QuickStatsGrid } from "@/components/health/QuickStatsGrid";
+
 import { computeHealthScore, generateSmartAlerts, generateRecommendations } from "@/lib/health-score";
 import { AssessmentsHub } from "@/components/health/AssessmentsHub";
 import { CalorieCalculator } from "@/components/health/CalorieCalculator";
@@ -342,15 +342,12 @@ export default function PatientDashboard() {
                   <RecommendationsCard tips={tips} userId={userId} />
                 </div>
 
-                {/* Alerts & Reminders Timeline */}
-                <div className="scroll-fade-in">
-                  <AlertsTimeline alerts={patientAlertsAll} />
-                </div>
-
-                {/* Quick Stats Grid */}
-                <div className="scroll-fade-in">
-                  <QuickStatsGrid logs={dailyLogs} healthEntries={healthEntries} heightCm={height} />
-                </div>
+                {/* Alerts & Reminders Timeline — only when there are alerts */}
+                {patientAlertsAll.length > 0 && (
+                  <div className="scroll-fade-in">
+                    <AlertsTimeline alerts={patientAlertsAll} />
+                  </div>
+                )}
               </>
             );
           })()}

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { Heart, ArrowRight, Users, BarChart3, Bell, Activity, Stethoscope } from "lucide-react";
+import { Heart, ArrowRight, Users, BarChart3, Bell, Activity, Stethoscope, Dumbbell, Moon, Wind, Brain, Sparkles, Shield, ClipboardList, Salad, Droplet, HeartPulse, FileText, Award, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/hooks/use-auth";
@@ -317,31 +317,25 @@ export default function Landing() {
                   </div>
                 </div>
                 <div className="mt-8 scroll-reveal delay-600 overflow-hidden">
-                  <div className="hero-hero-cards grid grid-cols-4 gap-2">
+                  <div className="hero-hero-cards grid grid-cols-3 gap-2">
                     {[
                       {
-                        title: "Real-time Monitoring",
-                        subtitle: "BP, Sugar, BMI, Sleep",
-                        stat: "4 live metrics",
+                        title: t('landing.card1Title'),
+                        subtitle: t('landing.card1Subtitle'),
+                        stat: "Sukari · BP · BMI",
                         tone: "from-blue-500 to-sky-500",
                       },
                       {
-                        title: "Risk Screening",
-                        subtitle: "Heart, Diabetes, Mental Health",
-                        stat: "Low risk",
+                        title: t('landing.card2Title'),
+                        subtitle: t('landing.card2Subtitle'),
+                        stat: "Kisukari · Moyo · Saratani",
                         tone: "from-cyan-500 to-blue-600",
                       },
                       {
-                        title: "Lifestyle Optimization",
-                        subtitle: "Nutrition, Exercise, Hydration",
-                        stat: "Personalized plan",
+                        title: t('landing.card3Title'),
+                        subtitle: t('landing.card3Subtitle'),
+                        stat: "Mazoezi · Lishe · Usingizi",
                         tone: "from-emerald-500 to-teal-500",
-                      },
-                      {
-                        title: "Insights & Reports",
-                        subtitle: "Trends, Correlations, Alerts",
-                        stat: "Weekly summary",
-                        tone: "from-blue-600 to-slate-700",
                       },
                     ].map((item, index) => (
                       <div
@@ -380,55 +374,43 @@ export default function Landing() {
               </h2>
               <p className="text-sm sm:text-lg text-slate-600">{t('landing.description')}</p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 items-start scroll-reveal delay-200">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 items-start scroll-reveal delay-200">
               {[
                 {
-                  icon: Stethoscope,
-                  title: "Health Monitoring",
-                  desc: "Track BP, Sugar, BMI and Sleep with daily score insights.",
-                  stat: "4 active metrics",
+                  icon: HeartPulse,
+                  title: t('landing.card1Title'),
+                  desc: t('landing.card1Desc'),
+                  stat: t('landing.card1Subtitle'),
                   details: [
-                    "Real-time vitals capture with automatic trend flags.",
-                    "Sleep and recovery insight for smarter routine choices.",
-                    "Secure summary reports for patients and clinicians.",
+                    t('landing.card1Detail1'),
+                    t('landing.card1Detail2'),
+                    t('landing.card1Detail3'),
                   ],
                   color: "from-blue-500 to-sky-500",
                 },
                 {
-                  icon: Heart,
-                  title: "Risk Screening",
-                  desc: "Spot heart, diabetes and mental health risks early.",
-                  stat: "Risk level: Low",
+                  icon: Shield,
+                  title: t('landing.card2Title'),
+                  desc: t('landing.card2Desc'),
+                  stat: t('landing.card2Subtitle'),
                   details: [
-                    "Predictive screening with personalized risk levels.",
-                    "Heart and metabolic health signals in one dashboard.",
-                    "Alerts and actionable recommendations for prevention.",
+                    t('landing.card2Detail1'),
+                    t('landing.card2Detail2'),
+                    t('landing.card2Detail3'),
                   ],
-                  color: "from-cyan-500 to-blue-500",
+                  color: "from-cyan-500 to-blue-600",
                 },
                 {
                   icon: Activity,
-                  title: "Lifestyle Optimization",
-                  desc: "Nutrition, exercise and hydration plans tuned daily.",
-                  stat: "Plan ready",
+                  title: t('landing.card3Title'),
+                  desc: t('landing.card3Desc'),
+                  stat: t('landing.card3Subtitle'),
                   details: [
-                    "Smart guidance for meals, movement and fluid balance.",
-                    "Behavioral nudges and performance summaries.",
-                    "Integrated support for healthier routines every day.",
+                    t('landing.card3Detail1'),
+                    t('landing.card3Detail2'),
+                    t('landing.card3Detail3'),
                   ],
                   color: "from-emerald-500 to-teal-500",
-                },
-                {
-                  icon: BarChart3,
-                  title: "Insights & Reports",
-                  desc: "Actionable trends and clinical-quality health reports.",
-                  stat: "52 insights/week",
-                  details: [
-                    "Interactive charts and trend-driven health summaries.",
-                    "Correlation reports for lifestyle, sleep and vitals.",
-                    "Executive-ready dashboards for care planning.",
-                  ],
-                  color: "from-blue-600 to-slate-600",
                 },
               ].map((feature, i) => (
                 <ExpandableFeatureCard
@@ -555,6 +537,101 @@ export default function Landing() {
                 >
                   {t('landing.qualitySummary')}
                 </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Lifestyle Tools Section */}
+      <section className="relative py-12 sm:py-20 px-4 sm:px-6 z-10 scroll-reveal delay-100">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100/80 backdrop-blur-sm border border-emerald-200 mb-4">
+              <Sparkles className="w-3.5 h-3.5 text-emerald-700" />
+              <span className="text-[10px] sm:text-xs font-semibold text-emerald-700 tracking-wider uppercase">{t('landing.tools.smartNote')}</span>
+            </div>
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 mb-3">{t('landing.tools.heading')}</h2>
+            <p className="text-sm sm:text-base text-slate-600">{t('landing.tools.subheading')}</p>
+            <p className="text-xs sm:text-sm text-slate-500 mt-2">{t('landing.tools.intro')}</p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+            {[
+              { icon: Dumbbell, title: t('landing.tools.exerciseTitle'), desc: t('landing.tools.exerciseDesc'), tone: "from-blue-500 to-sky-500" },
+              { icon: HeartPulse, title: t('landing.tools.healthTitle'), desc: t('landing.tools.healthDesc'), tone: "from-cyan-500 to-blue-600" },
+              { icon: Moon, title: t('landing.tools.sleepTitle'), desc: t('landing.tools.sleepDesc'), tone: "from-indigo-500 to-purple-500" },
+              { icon: Brain, title: t('landing.tools.stressTitle'), desc: t('landing.tools.stressDesc'), tone: "from-pink-500 to-rose-500" },
+              { icon: Wind, title: t('landing.tools.airTitle'), desc: t('landing.tools.airDesc'), tone: "from-emerald-500 to-teal-500" },
+              { icon: ClipboardList, title: t('landing.tools.productivityTitle'), desc: t('landing.tools.productivityDesc'), tone: "from-amber-500 to-orange-500" },
+            ].map((item, i) => (
+              <div key={i} className="rounded-2xl border border-slate-200/70 bg-white/95 p-4 shadow-floating hover:-translate-y-1 hover:shadow-glow transition-all">
+                <div className={`inline-flex h-10 w-10 rounded-xl bg-gradient-to-br ${item.tone} text-white items-center justify-center shadow-lg shadow-blue-500/20 mb-3`}>
+                  <item.icon className="h-5 w-5" />
+                </div>
+                <p className="text-sm font-bold text-slate-900">{item.title}</p>
+                <p className="text-xs text-slate-600 mt-1">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Doctor Preparation — Coming Soon */}
+      <section className="relative py-12 sm:py-20 px-4 sm:px-6 z-10 scroll-reveal delay-100">
+        <div className="max-w-4xl mx-auto">
+          <div className="relative rounded-3xl border border-blue-200 bg-gradient-to-br from-white via-blue-50/40 to-white p-6 sm:p-10 shadow-floating overflow-hidden">
+            <div className="absolute -top-16 -right-16 w-48 h-48 rounded-full bg-blue-300/30 blur-3xl pointer-events-none" />
+            <div className="relative flex flex-col sm:flex-row gap-5 sm:gap-7 items-start">
+              <div className="h-12 w-12 sm:h-14 sm:w-14 rounded-2xl bg-gradient-to-br from-blue-600 to-blue-800 text-white flex items-center justify-center shadow-lg shadow-blue-500/30 shrink-0">
+                <Stethoscope className="h-6 w-6 sm:h-7 sm:w-7" />
+              </div>
+              <div className="flex-1">
+                <div className="flex flex-wrap items-center gap-2 mb-2">
+                  <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 text-amber-800 px-3 py-1 text-[10px] font-bold tracking-wider uppercase">
+                    <Sparkles className="h-3 w-3" /> {t('landing.doctorPrep.comingSoon')}
+                  </span>
+                </div>
+                <h3 className="text-xl sm:text-3xl font-black text-slate-900">{t('landing.doctorPrep.heading')}</h3>
+                <p className="text-sm sm:text-base text-blue-700 font-semibold mt-1">{t('landing.doctorPrep.subheading')}</p>
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed mt-3">{t('landing.doctorPrep.desc')}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Expert Section */}
+      <section className="relative py-12 sm:py-16 px-4 sm:px-6 z-10 scroll-reveal delay-100">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100/80 backdrop-blur-sm border border-blue-200 mb-4">
+            <Award className="w-3.5 h-3.5 text-blue-700" />
+            <span className="text-[10px] sm:text-xs font-semibold text-blue-700 tracking-wider uppercase">{t('landing.expert.heading')}</span>
+          </div>
+          <div className="rounded-3xl border border-slate-200 bg-white/90 p-6 sm:p-10 shadow-floating">
+            <div className="h-16 w-16 sm:h-20 sm:w-20 mx-auto rounded-full bg-gradient-to-br from-blue-600 to-blue-800 text-white flex items-center justify-center shadow-lg shadow-blue-500/30 mb-4">
+              <Stethoscope className="h-8 w-8 sm:h-10 sm:w-10" />
+            </div>
+            <h3 className="text-xl sm:text-2xl font-black text-slate-900">{t('landing.expert.name')}</h3>
+            <p className="text-sm font-semibold text-blue-700 mt-1">{t('landing.expert.credentials')}</p>
+            <p className="text-sm sm:text-base text-slate-600 mt-2">{t('landing.expert.role')}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Disclaimer */}
+      <section className="relative py-10 sm:py-14 px-4 sm:px-6 z-10 scroll-reveal delay-100">
+        <div className="max-w-4xl mx-auto">
+          <div className="rounded-3xl border border-amber-200 bg-amber-50/60 p-5 sm:p-8">
+            <div className="flex items-start gap-3 sm:gap-4">
+              <div className="h-9 w-9 sm:h-10 sm:w-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
+                <AlertTriangle className="h-5 w-5" />
+              </div>
+              <div className="space-y-2 sm:space-y-3">
+                <h4 className="text-base sm:text-lg font-black text-amber-900">{t('landing.disclaimer.heading')}</h4>
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">{t('landing.disclaimer.p1')}</p>
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">{t('landing.disclaimer.p2')}</p>
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">{t('landing.disclaimer.p3')}</p>
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">{t('landing.disclaimer.p4')}</p>
               </div>
             </div>
           </div>
